@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -12,7 +13,14 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false,
+  useUnifiedTopology: true,
 });
+
+let uri = "mongodb://localhost/workout";
+if (process.env.NODE_ENV === "production") {
+  uri = process.env.MONGODB_URI;
+}
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // routes
 app.use(require("./routes/api.js"));
