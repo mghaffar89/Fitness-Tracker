@@ -11,21 +11,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
-);
-
-// let uri = "mongodb://localhost/workout";
-// if (process.env.NODE_ENV === "production") {
-//  uri = process.env.MONGODB_URI;
-//}
-//mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 // routes
 app.use(require("./routes/api.js"));
