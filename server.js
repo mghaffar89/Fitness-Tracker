@@ -16,11 +16,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useUnifiedTopology: true,
 });
 
-let uri = "mongodb://localhost/workout";
-if (process.env.NODE_ENV === "production") {
-  uri = process.env.MONGODB_URI;
-}
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// let uri = "mongodb://localhost/workout";
+// if (process.env.NODE_ENV === "production") {
+//  uri = process.env.MONGODB_URI;
+//}
+//mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // routes
 app.use(require("./routes/api.js"));
