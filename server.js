@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const compression = require("compression");
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,6 +15,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 // let uri = "mongodb://localhost/workout";
